@@ -1,0 +1,97 @@
+select{
+    border: 2px solid white;
+   outline: 2px solid white;
+}
+select::content{
+    border: 2px solid white;
+   outline: 2px solid white;
+}
+
+svg{
+    margin: 10px;
+}
+a:link{
+    text-decoration: none;
+    color: black;
+    margin: 20px;
+    font-size: 25px;
+}
+select{
+    font-size:25px;
+}
+header{
+    display: flex;  
+    justify-content: space-around;
+    align-items: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+footer {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px; 
+    background-color: aqua;
+}
+.footer-section {
+    flex: 1;
+    margin-right: 20px; 
+}
+.footer-section h2 {
+    font-size: 18px;
+}
+.footer-section p {
+    font-size: 18px;
+}
+.square{
+    background-color: blue;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 200px;
+}
+.staff-section{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px; 
+}
+.staff{
+    margin: 30px;
+}
+.service{
+    display: block;
+    align-items: center;
+}
+.inner{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+.media{
+    display: flex;
+    align-items: center;
+}
+.gsearch{
+    display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+}
+.image-container img {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-container:hover img {
+    transform: scale(1.1); 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
