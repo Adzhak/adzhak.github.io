@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Наши услуги</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="pic/logo.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
@@ -30,12 +31,46 @@
               </li>
             </ul>
             <form class="d-flex" role="search">
-              <input class="px-3 form-control me-2" type="search" placeholder="Search" aria-describedby="inputGroup-sizing-default" aria-label="Search">
+              <input id="searchService" class="px-3 form-control me-2" type="search" placeholder="Search" aria-describedby="inputGroup-sizing-default" aria-label="Search">
               <i class="pt-3 fa-solid fa-magnifying-glass fa-beat fa-lg"></i>
+              <div id="searchDropdown" class="dropdown-menu" aria-labelledby="searchService"></div>
             </form>
+            
           </div>
         </div>
       </nav>
+      <script>
+        document.getElementById('searchService').addEventListener('input', function() {
+let inputVal = this.value.toLowerCase();
+
+let servicesElements = document.querySelectorAll('div.position-absolute > h3');
+let servicesArray = [];
+for(let i = 0; i < servicesElements.length; i++) {
+  servicesArray.push(servicesElements[i].textContent.toLowerCase());
+}
+
+let dropdown = document.getElementById('searchDropdown');
+dropdown.innerHTML = '';
+
+for(let i = 0; i < servicesArray.length; i++) {
+  if (servicesArray[i].includes(inputVal) && inputVal !== "") {
+      let item = document.createElement('a');
+      item.href = '#';
+      item.className = 'dropdown-item';
+      item.textContent = servicesElements[i].textContent;
+      item.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('searchService').value = this.textContent;
+          dropdown.innerHTML = '';
+          dropdown.style.display="none"
+      });
+      dropdown.appendChild(item);
+  }
+}
+dropdown.style.display = dropdown.children.length ? "block" : "none";
+});
+
+      </script>
       <div class="d-flex row px-3 py-4">
         <div class="py-4 d-inline-flex col-lg-4 col-md-6 col-sm-12 position-relative">
 
@@ -43,7 +78,7 @@
                 <div class="position-absolute top-50 start-50 translate-middle text-bg-black">
                     <h3>Лечение зубов</h3>
                     <p>You can customize the position, style, and content of this text.</p>
-                    <button type="button" class="btn btn-primary">Записаться</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal1">Записаться</button>
                 </div>
 
         </div>
@@ -52,7 +87,7 @@
                 <div class="position-absolute top-50 start-50 translate-middle text-bg-black">
                     <h3>Удаление зубов</h3>
                     <p>You can customize the position, style, and content of this text.</p>
-                    <button type="button" class="btn btn-primary">Записаться</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal2">Записаться</button>
                 </div>
         </div>
         <div class="py-4 d-inline-flex col-lg-4 col-md-6 col-sm-12 position-relative">
@@ -60,7 +95,7 @@
                 <div class="position-absolute top-50 start-50 translate-middle text-bg-black">
                     <h3>Протезирование</h3>
                     <p>You can customize the position, style, and content of this text.</p>
-                    <button type="button" class="btn btn-primary">Записаться</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal3">Записаться</button>
                 </div>
         </div>
         <div class="py-4 d-inline-flex col-lg-4 col-md-6 col-sm-12 position-relative">
@@ -68,7 +103,7 @@
                 <div class="position-absolute top-50 start-50 translate-middle text-bg-black">
                     <h3>Имплантация</h3>
                     <p>You can customize the position, style, and content of this text.</p>
-                    <button type="button" class="btn btn-primary">Записаться</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal4">Записаться</button>
                 </div>
         </div>
         <div class="py-4 d-inline-flex col-lg-4 col-md-6 col-sm-12 position-relative">
@@ -76,7 +111,7 @@
                 <div class="position-absolute top-50 start-50 translate-middle text-bg-black">
                     <h3>Ортодонтология</h3>
                     <p>You can customize the position, style, and content of this text.</p>
-                    <button type="button" class="btn btn-primary">Записаться</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal5">Записаться</button>
                 </div>
         </div>
         <div class="py-4 d-inline-flex col-lg-4 col-md-6 col-sm-12 position-relative">
@@ -84,13 +119,247 @@
                 <div class="position-absolute top-50 start-50 translate-middle text-bg-black">
                     <h3>Профилактика</h3>
                     <p>You can customize the position, style, and content of this text.</p>
-                    <button type="button" class="btn btn-primary">Записаться</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal6">Записаться</button>
         </div>
       </div>
 
 
 
 
+
+      <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Лечение зубов</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container mt-5">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <button id="alert-button" type="submit" class="btn btn-primary mt-2">Register</button>
+                    <p id="errorMessage" class="text-danger mt-2"></p>
+                </form>
+                <script>
+                  const button = document.getElementById('alert-button');
+                  button.addEventListener('click', function() {
+                    alert('Вы успешно зарегестрировались');
+});
+                </script>
+            </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Удаление зубов</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container mt-5">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Register</button>
+                    <p id="errorMessage" class="text-danger mt-2"></p>
+                </form>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Протезирование</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container mt-5">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Register</button>
+                    <p id="errorMessage" class="text-danger mt-2"></p>
+                </form>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="Modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Имплантация</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container mt-5">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Register</button>
+                    <p id="errorMessage" class="text-danger mt-2"></p>
+                </form>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="Modal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Ортодонтология</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container mt-5">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Register</button>
+                    <p id="errorMessage" class="text-danger mt-2"></p>
+                </form>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="Modal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Профилактика</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container mt-5">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Register</button>
+                    <p id="errorMessage" class="text-danger mt-2"></p>
+                </form>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+<script>
+  document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let errorMessage = document.getElementById('errorMessage');
+    errorMessage.textContent = '';
+
+    if (!name) {
+        errorMessage.textContent = 'Name is required!';
+        event.preventDefault();
+        return;
+    }
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; 
+    if (!email.match(emailPattern)) {
+        errorMessage.textContent = 'Enter a valid email!';
+        event.preventDefault();
+        return;
+    }
+
+    if (password.length < 8) {
+        errorMessage.textContent = 'Password should be at least 8 characters long!';
+        event.preventDefault();
+        return;
+    }
+});
+
+</script>
 
 
 
