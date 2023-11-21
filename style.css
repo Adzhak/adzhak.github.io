@@ -1,97 +1,53 @@
-select{
-    border: 2px solid white;
-   outline: 2px solid white;
-}
-select::content{
-    border: 2px solid white;
-   outline: 2px solid white;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents any unexpected horizontal scrolling */
 }
 
-svg{
-    margin: 10px;
+.slider-container {
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
 }
-a:link{
-    text-decoration: none;
-    color: black;
-    margin: 20px;
-    font-size: 25px;
-}
-select{
-    font-size:25px;
-}
-header{
-    display: flex;  
-    justify-content: space-around;
-    align-items: center;
-}
-.container {
+
+.slider {
     display: flex;
+    transition: all 0.3s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100vw; /* Set the width to the viewport width */
+    height: 600px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-  }
-footer {
-    margin-top: 100px;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px; 
-    background-color: aqua;
-}
-.footer-section {
-    flex: 1;
-    margin-right: 20px; 
-}
-.footer-section h2 {
-    font-size: 18px;
-}
-.footer-section p {
-    font-size: 18px;
-}
-.square{
-    background-color: blue;
-    margin-left: 400px;
-    margin-right: 400px;
-    padding: 200px;
-}
-.staff-section{
-    margin-top: 100px;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px; 
-}
-.staff{
-    margin: 30px;
-}
-.service{
-    display: block;
-    align-items: center;
-}
-.inner{
-    margin-top: 100px;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
-.media{
-    display: flex;
-    align-items: center;
-}
-.gsearch{
-    display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #bdbdbd;
-  border-radius: 0.25rem;
-}
-.image-container img {
-    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 24px;
+    color: white;
 }
 
-.image-container:hover img {
-    transform: scale(1.1); 
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
